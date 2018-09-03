@@ -1,0 +1,4 @@
+rootProject.name = 'twitter'
+include 'twitter-app'
+include 'twitter-domain'
+

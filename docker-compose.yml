@@ -1,0 +1,42 @@
+version: "2.1"
+
+services:
+  app:
+    build: twitter-app
+    image: kimtis/twitter/app:latest
+    environment:
+      - SPRING_PROFILE=production
+      - JVM_MEMORY=-Xmx4g -Xms4g -XX:MetaspaceSize=200m
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/hello"]
+      interval: 30s
+      timeout: 60s
+      retries: 15
+
+  web:
+    build: twitter-web
+    image: kimtis/twitter/web:latest
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/hello"]
+      interval: 30s
+      timeout: 60s
+      retries: 15
+
+  nginx:
+    build: twitter-nginx
+    image: kimtis/twitter/nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - app:app
+      - web:web
+    depends_on:
+      app:
+        condition: service_healthy
+      web:
+        condition: service_healthy
