@@ -11,7 +11,7 @@
 ``` sh
 gradle clean build
 ```
-#### Bake Docker Images
+#### Build Docker Images
 ``` sh
 source JenkinsFile.sh
 ```
