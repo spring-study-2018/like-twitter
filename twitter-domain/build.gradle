@@ -7,6 +7,8 @@ bootRepackage {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    runtime('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
