@@ -11,11 +11,11 @@ create table Member (
   primary key (memberId)
 );
 
-create table Tweet (
-  tweetId bigint not null auto_increment,
-  content varchar(280) not null,
-  memberId bigint not null,
-  createdAt timestamp not null default now(),
-  primary key (tweetId),
-  foreign key (memberId) references Member(memberId)
-);
+--create table Tweet (
+--  tweetId bigint not null auto_increment,
+--  content varchar(280) not null,
+--  memberId bigint not null,
+--  createdAt timestamp not null default now(),
+--  primary key (tweetId),
+--  foreign key (memberId) references Member(memberId)
+--);

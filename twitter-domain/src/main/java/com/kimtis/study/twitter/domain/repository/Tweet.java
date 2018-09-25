@@ -11,24 +11,23 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @Data
-@Entity
+@Entity(name="TWEET")
 public class Tweet extends AbstractEntity {
 
     @Id
-    @Column(name="tweetId")
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(nullable=false)
     private Long tweetId;
 
-    @Column(name="content", columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
 //    @ManyToOne(targetEntity=Member.class, fetch=FetchType.LAZY)
 //    @JoinColumn(name="memberId")
 //    private Member member;
 
-    @Column
+    @Column(nullable=false)
     private long memberId;
-
 
     @Builder
     public Tweet(String content, long memberId){

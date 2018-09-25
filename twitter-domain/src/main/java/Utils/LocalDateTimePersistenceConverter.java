@@ -1,4 +1,4 @@
-package com.kimtis.study.twitter.domain.repository;
+package Utils;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

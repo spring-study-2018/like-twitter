@@ -4,10 +4,11 @@ import javax.servlet.http.HttpSession;
 
 public class HttpSessionUtils {
 
-    // session 의 key 값을 상수로 설정
+    // set session key
     public static final String USER_SESSION_KEY = "user_session";
 
-    // 로그인된 유저 판별
+    // validate login session
+    //The Object return type should be replaced with a member class.
     public static boolean isLogin(HttpSession session) {
 
         Object sessionUser = session.getAttribute(USER_SESSION_KEY);
@@ -21,7 +22,6 @@ public class HttpSessionUtils {
         if (!isLogin(session)) {
             return null;
         }
-
         return session.getAttribute(USER_SESSION_KEY);
     }
 

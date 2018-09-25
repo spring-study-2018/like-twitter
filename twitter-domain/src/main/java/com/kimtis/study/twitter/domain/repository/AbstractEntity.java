@@ -1,12 +1,11 @@
 package com.kimtis.study.twitter.domain.repository;
 
+import Utils.LocalDateTimePersistenceConverter;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,8 +15,11 @@ import java.time.format.DateTimeFormatter;
 //Auditing 기능을 포함
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractEntity {
+
     @CreatedDate
-    private LocalDateTime createdAt;
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     public String getFormattedCreateDate() {
         return getFormattedDate(createdAt, "yyyy.MM.dd HH:mm:ss");
