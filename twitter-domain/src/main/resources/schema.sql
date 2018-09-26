@@ -1,5 +1,7 @@
-drop table if exists Member;
+set mode MYSQL;
+
 drop table if exists Tweet;
+drop table if exists Member;
 
 create table Member (
   memberId bigint not null auto_increment,
@@ -16,6 +18,12 @@ create table Tweet (
   content varchar(280) not null,
   memberId bigint not null,
   createdAt timestamp not null default now(),
-  primary key (tweetId),
-  foreign key (memberId) references Member(memberId)
+  primary key (tweetId)
 );
+
+alter table Member add constraint UK_MEMBER_ID
+  unique key (id);
+
+alter table Tweet add constraint FK_TWEET_MEMBER
+  foreign key (memberId)
+  references Member;
