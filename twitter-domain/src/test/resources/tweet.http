@@ -1,0 +1,19 @@
+GET http://localhost:8080/api/hello
+
+###
+
+GET http://localhost:8080/api/tweet
+
+###
+GET http://localhost:8080/api/tweet/1
+
+###t
+POST http://localhost:8080/api/tweet
+Content-Type: application/json
+
+{
+  "content": "test",
+  "memberId": 1
+}
+
+###

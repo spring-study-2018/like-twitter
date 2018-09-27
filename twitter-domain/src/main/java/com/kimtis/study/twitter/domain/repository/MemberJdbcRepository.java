@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 public class MemberJdbcRepository {
 
 	public String hello() {
-		return "Hello";
+		return "Hello world";
 	}
 }

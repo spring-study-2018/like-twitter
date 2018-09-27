@@ -15,4 +15,5 @@ public class HealthCheckController {
     public String healthCheck() {
         return memberJdbcRepository.hello();
     }
+
 }
