@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -16,9 +17,11 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long tweetId;
-    @Column
+
+    @NotNull
     private String content;
-    @Column
+
+    @NotNull
     private long memberId;
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
