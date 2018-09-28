@@ -1,12 +1,9 @@
 package com.kimtis.study.twitter.app.controller;
 
-import com.kimtis.study.twitter.domain.repository.Tweet;
+import com.kimtis.study.twitter.domain.model.Tweet;
 import com.kimtis.study.twitter.domain.repository.TweetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -17,11 +14,11 @@ public class TweetController {
     @GetMapping("/tweet")
     public String getAllTweets (){
 
-        return "hellp";
+        return "hello n";
     }
 
     @PostMapping("/tweet")
-    public String postTweet(@Valid @RequestBody Tweet tweet){
+    public String postTweet(@RequestBody Tweet tweet){
 
         return tweet.toString();
     }
