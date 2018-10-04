@@ -3,9 +3,9 @@ package com.kimtis.study.twitter.domain.repository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberJdbcRepository {
+public class HealthCheckRepository {
 
-	public String hello() {
-		return "Hello world";
-	}
+    public String hello(){
+        return "Hello";
+    }
 }

@@ -1,0 +1,15 @@
+
+GET http://localhost:8080/api/member/1
+
+###
+POST http://localhost:8080/api/member
+Content-Type: application/json
+
+{
+  "id": "asdf12",
+  "password": "qwe123",
+  "displayName": "realhs01",
+  "email": "realhs01@gmail.com"
+}
+
+###

@@ -1,39 +1,34 @@
 package com.kimtis.study.twitter.app.controller;
 
 import com.kimtis.study.twitter.domain.model.Tweet;
-import com.kimtis.study.twitter.domain.model.TweetDTO;
 import com.kimtis.study.twitter.domain.repository.TweetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
+@RequestMapping("/tweet")
 @AllArgsConstructor
 public class TweetController {
 
     private TweetRepository tweetRepository;
 
-    @GetMapping("/tweet")
-    public String getAllTweets (){
-
-        return "hello n";
+    @GetMapping("")
+    public List<Tweet> getAllTweets (){
+        return tweetRepository.findAll();
     }
 
-    @PostMapping("/tweet")
-    public String postTweet(@RequestBody Tweet tweet){
-
-        return tweet.toString();
+    @PostMapping("")
+    public Tweet postTweet(@RequestBody @Valid Tweet tweet){
+        System.out.println(tweet.getContent());
+        return tweetRepository.save(tweet);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path="/t")
-    public String postTweet(@RequestBody TweetDTO tweet){
-
-        return tweet.toString();
-    }
-
-
-    @GetMapping("/tweet/{tweetId}")
-    public long getTweet(@PathVariable("tweetId")long tweetId){
-        return tweetId;
+    @GetMapping("/{tweetId}")
+    public Tweet getTweet(@PathVariable("tweetId")long tweetId){
+        return tweetRepository.findOne(tweetId);
     }
 
 

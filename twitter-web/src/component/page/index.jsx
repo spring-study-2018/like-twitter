@@ -1,6 +1,7 @@
 import React from 'react';
 
 import dashboard from './dashboard';
+import tweet from './tweet';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -29,6 +30,17 @@ export default [
             {
                 path: "/",
                 component: () => <div>Template</div>
+            }
+        ]
+    },
+    {
+        path: "/tweet",
+        name: "Tweet",
+        icon: FavoriteIcon,
+        subPages: [
+            {
+                path: "/",
+                component: tweet.PostTweet
             }
         ]
     }
