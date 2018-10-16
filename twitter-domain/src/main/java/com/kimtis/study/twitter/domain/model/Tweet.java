@@ -21,7 +21,6 @@ public class Tweet {
 	private Long tweetId;
 
 	@NotNull
-	@Max(180)
 	private String content;
 
 	@NotNull

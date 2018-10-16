@@ -1,35 +1,37 @@
 package com.kimtis.study.twitter.app.controller;
 
-import com.kimtis.study.twitter.app.service.MemberService;
 import com.kimtis.study.twitter.domain.model.Member;
+import com.kimtis.study.twitter.domain.service.UserDetailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
 @RestController
-@RequestMapping("/members")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class MemberController {
-	private final MemberService memberService;
+	private final UserDetailService userDetailService;
 
-	@RequestMapping(method = RequestMethod.GET, path = "/{memberId}")
-	public Member findMember(@PathVariable Long memberId) {
-		return memberService.findMember(memberId);
+
+	@RequestMapping(method = RequestMethod.POST, path = "/register")
+	public Member registerMember(@RequestBody @Valid Member member) throws Exception {
+
+		return userDetailService.register(member);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "")
-	public Member createMember(@RequestBody @Valid Member member) {
-		return memberService.createMember(member);
+	@RequestMapping(method = RequestMethod.GET, path = "/{username}")
+	public Member getMember(@PathVariable String username){
+
+		return userDetailService.findByUsername(username);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, path = "/{memberId}")
-	public Member updateMember(@PathVariable Long memberId, @RequestBody @Valid Member member) {
-		return memberService.updateMember(memberId, member);
+
+	@RequestMapping(method = RequestMethod.GET, path = "/me")
+	public Member getMember(OAuth2Authentication auth){
+		String username = auth.getPrincipal().toString();
+		return userDetailService.findByUsername(username);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, path = "/{memberId}")
-	public Member deleteMember(@PathVariable Long memberId) {
-		return memberService.deleteMember(memberId);
-	}
+
 }

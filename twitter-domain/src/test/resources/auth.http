@@ -1,0 +1,64 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+
+
+### 회원가입 하기 (permitAll)
+POST localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+  "id": "user",
+  "password": "password",
+  "displayName": "sdfd",
+  "email":"we",
+  "createdAt":"2018-09-10"
+}
+
+### token 얻기
+POST localhost:8080/api/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic dHdpdHRlci1hcHA6c2VjcmV0
+
+grant_type=password&username=user&password=password
+
+### refresh 토큰 얻기
+POST localhost:8080/api/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic dHJ1c3RlZC1hcHA6c2VjcmV0
+
+grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidHdpdHRlci1hcHAiXSwidXNlcl9uYW1lIjoiYXNmZCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJhdGkiOiIwMjI4MGQ0NS00N2VjLTQ2ZjQtODIzZC1hMzM1YTExYWZlZGEiLCJleHAiOjE1NDIwODk1MjAsImF1dGhvcml0aWVzIjpbInVzZXIiXSwianRpIjoiOGYyY2RkYTMtMjA2ZC00MDU3LWExNWQtNDVmMDk2YmI5MWI2IiwiY2xpZW50X2lkIjoidHJ1c3RlZC1hcHAifQ.CrGzDJypTn_Fz4AT1U0z3Fzn8t5UuHIE82EO7bDiX74
+
+### 트윗 가져오기 (authenticated)
+GET localhost:8080/api/tweets/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidHdpdHRlci1hcHAiXSwidXNlcl9uYW1lIjoidXNlciIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1Mzk3MTY2NjMsImF1dGhvcml0aWVzIjpbInVzZXIiXSwianRpIjoiMzY0YjdmMDAtNTI5Zi00OTcyLTlhNjYtNzg5ZmJmM2Q1YTcwIiwiY2xpZW50X2lkIjoidHJ1c3RlZC1hcHAifQ.Uaxoq-v2Ui3fyUB76KYGxR9z_wSata-su4FE9Ly0Gb0
+
+### 트윗 등록 (authenticated)
+POST localhost:8080/api/tweets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidHdpdHRlci1hcHAiXSwidXNlcl9uYW1lIjoidXNlciIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1Mzk3MTY2NjMsImF1dGhvcml0aWVzIjpbInVzZXIiXSwianRpIjoiMzY0YjdmMDAtNTI5Zi00OTcyLTlhNjYtNzg5ZmJmM2Q1YTcwIiwiY2xpZW50X2lkIjoidHJ1c3RlZC1hcHAifQ.Uaxoq-v2Ui3fyUB76KYGxR9z_wSata-su4FE9Ly0Gb0
+
+{
+  "member": {
+    "memberId": 2
+  },
+  "content": "textasdfasdf",
+  "createdAt": "2018-09-11"
+}
+
+### 내 정보 가져오기 (authenticated)
+GET localhost:8080/api/user/me
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsidHdpdHRlci1hcHAiXSwidXNlcl9uYW1lIjoidXNlciIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1Mzk3Mzc1NzYsImF1dGhvcml0aWVzIjpbInVzZXIiXSwianRpIjoiYzEyZmIzODctNTdjNy00ZmYzLWFmNmEtYzdkMWEyYTcyZDE4IiwiY2xpZW50X2lkIjoidHdpdHRlci1hcHAifQ.tagNeIvzadSYqpYGG9dFeXnKS0012DbH9GMRJR5EUiM
+
+
+### 테스트 방법
+# 1. 회원 가입하기
+# 2. token 얻기
+# 3. response body에서 access token으로
+# 3-1. 내 정보 가져오기 (user만 가능)
+# 3-2. 트윗 등록  (user만 가능)

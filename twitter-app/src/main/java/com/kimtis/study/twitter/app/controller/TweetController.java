@@ -4,6 +4,7 @@ import com.kimtis.study.twitter.app.service.TweetService;
 import com.kimtis.study.twitter.domain.model.Tweet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/tweets")
 @RequiredArgsConstructor
+@PreAuthorize("isAuthenticated()")
 public class TweetController {
 	private final TweetService tweetService;
 
