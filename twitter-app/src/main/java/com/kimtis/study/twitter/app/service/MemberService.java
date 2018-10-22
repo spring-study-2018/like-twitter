@@ -14,6 +14,10 @@ public class MemberService {
 		return memberRepository.findOne(memberId);
 	}
 
+	public Member findMemberById(String id) {
+		return memberRepository.findMemberById(id);
+	}
+
 	public Member createMember(Member member) {
 		return memberRepository.save(member);
 	}

@@ -1,0 +1,18 @@
+### Get member by memberId
+GET http://localhost:8080/api/members/1
+
+### Create test user
+POST http://localhost:8080/api/members
+Content-Type: application/json
+
+{
+  "id": "testuser",
+  "password": "1234",
+  "displayName": "Test User",
+  "email": "user@test.com"
+}
+
+### Get member by id
+GET http://localhost:8080/api/members/id/testuser
+
+###

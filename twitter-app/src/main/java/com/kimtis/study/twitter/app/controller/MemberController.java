@@ -18,6 +18,11 @@ public class MemberController {
 		return memberService.findMember(memberId);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/id/{id}")
+	public Member findMemberById(@PathVariable String id) {
+		return memberService.findMemberById(id);
+	}
+
 	@RequestMapping(method = RequestMethod.POST, path = "")
 	public Member createMember(@RequestBody @Valid Member member) {
 		return memberService.createMember(member);
