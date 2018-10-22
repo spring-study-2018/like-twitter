@@ -1,9 +1,9 @@
 package com.kimtis.study.twitter.app.configuration;
 
-import org.springframework.context.annotation.ComponentScan;
+import com.kimtis.study.twitter.domain.EnableTwitterDomain;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.kimtis.study.twitter.domain")
+@EnableTwitterDomain
 public class ApplicationContextConfig {
 }
