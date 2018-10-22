@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -32,7 +32,9 @@ const style = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    color: 'black',
     cursor: 'pointer',
+    textDecoration: 'none',
     '&:hover': {
       color: theme.palette.primary.dark
     }
@@ -80,11 +82,11 @@ const style = (theme) => ({
   },
 });
 
-export default withStyles(style)(({ children, classes }) => (
+export default withStyles(style)(({ classes }) => (
   <AppBar position="fixed" color="default">
     <Toolbar className={classes.content} variant="dense">
-      <Link href="/">
-        <Typography className={classes.title} variant="title" color="inherit" noWrap>
+      <Link className={classes.title} to="/">
+        <Typography variant="title" color="inherit" noWrap>
           Twitter
         </Typography>
       </Link>
