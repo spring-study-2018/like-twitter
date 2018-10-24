@@ -9,6 +9,7 @@ create table Member (
   password char(128) not null,
   displayName char(32) not null,
   email varchar(64) not null,
+  authority varchar2(12) not null,
   createdAt timestamp not null default now(),
   primary key (memberId)
 );
